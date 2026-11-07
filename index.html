@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>아니마 풀 테라스 | 반려가족의 새로운 일상</title>
   <meta name="description" content="영종 아니마 풀 테라스. 반려가족을 위한 공간 소개와 한 세대 분양·지분등기 방문상담.">
   <meta name="theme-color" content="#143e32">
@@ -207,20 +207,24 @@
         <label>문의사항 (선택)
           <textarea name="message" rows="3" maxlength="1000" placeholder="궁금하신 내용을 남겨주세요"></textarea>
         </label>
+        
+        <!-- 정식 개인정보 수집 및 이용 안내 -->
         <details>
-          <summary>개인정보 수집·이용 안내 — 검토용 초안</summary>
-          <p>
-            수집 항목: 성명, 연락처, 방문 희망일·시간, 관심 상품, 문의사항.<br>
-            목적: 방문상담 신청 처리 및 일정 조율.<br>
-            알림 전달: 담당자의 Discord 및 문자 수신 채널.<br>
-            수집 주체 및 보유기간은 운영 정책 확정 후 안내합니다. 현재 온라인 접수는 준비 중이며 입력 내용은 전송되지 않습니다.
-          </p>
+          <summary>개인정보 수집 및 이용 동의 (필수)</summary>
+          <div style="margin-top: 10px; line-height: 1.8; color: #d0ded2; font-size: 11px;">
+            <p>영종 아니마 풀 테라스는 원활한 방문상담 일정 안내 및 고객 관리를 위해 아래와 같이 개인정보를 수집·이용합니다.</p>
+            <p>• <strong>수집 항목:</strong> 성명, 연락처(휴대전화번호), 방문 희망일시, 관심 상품, 문의사항<br>
+            • <strong>수집 및 이용 목적:</strong> 방문상담 예약 접수, 본인 확인, 상담 일정 조율 및 확정 안내 발송<br>
+            • <strong>보유 및 이용 기간:</strong> 상담 완료 및 관련 업무 종료 시까지 (상담 접수일로부터 1년 보관 후 안전하게 파기하며, 고객의 삭제 요청 시 즉시 파기합니다)<br>
+            • <strong>동의 거부 권리:</strong> 귀하는 개인정보 수집 및 이용에 동의하지 않을 권리가 있습니다. 단, 필수 항목 동의 거부 시 방문상담 예약 신청이 제한됩니다.</p>
+          </div>
         </details>
+
         <label class="consent">
           <input type="checkbox" name="consent" required> 개인정보 수집·이용에 동의합니다.
         </label>
         <button class="button gold" type="submit">방문상담 예약 신청 ↗</button>
-        <p id="status" role="status" aria-live="polite">온라인 접수 연결 준비 중입니다. 전화 또는 문자상담으로 방문 일정을 문의해 주세요.</p>
+        <p id="status" role="status" aria-live="polite" style="margin-top:15px; font-weight:500;"></p>
         <p class="fine">
           ANIMA POOL TERRACE · 영종 아니마 풀 테라스<br>
           본 페이지의 이미지는 연출·홍보 이미지이며 실제와 차이가 있을 수 있습니다.
