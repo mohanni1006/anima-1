@@ -2,8 +2,17 @@
 
 const config = {
   endpoint: 'https://anima-1-webhook.mohanni1006.workers.dev/',
-  notificationsEnabled: true // 알림 활성화
+  notificationsEnabled: true
 };
+
+// URL에서 ?store=매장명 파라미터 확인 및 세션 저장
+const urlParams = new URLSearchParams(window.location.search);
+const queryStore = urlParams.get('store') || urlParams.get('utm_source');
+if (queryStore) {
+  sessionStorage.setItem('anima-source-store', queryStore);
+}
+// 현재 유입 매장 (없으면 '일반 접속')
+const currentStore = sessionStorage.getItem('anima-source-store') || null;
 
 // 팝업 제어
 const popup = document.querySelector('#welcome');
@@ -17,7 +26,6 @@ if (popup) {
   document.querySelector('#popup-reserve')?.addEventListener('click', closePopup);
   popup.addEventListener('close', () => document.body.classList.remove('modal'));
 
-  // 팝업 바깥 배경 클릭 시 닫기
   popup.addEventListener('click', (e) => {
     const rect = popup.getBoundingClientRect();
     const isInDialog = (
@@ -56,7 +64,7 @@ async function notifyWorker(discordPayload, smsPayload = null) {
   return result;
 }
 
-// 1. 홈페이지 접속 시 디스코드 방문 알림 (세션당 1회 발송)
+// 1. 홈페이지 접속 시 디스코드 방문 알림 (QR 출처 포함)
 if (config.notificationsEnabled) {
   try {
     if (!sessionStorage.getItem('anima-visit-recorded')) {
@@ -65,17 +73,21 @@ if (config.notificationsEnabled) {
       const now = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
       const referrer = document.referrer || '직접 접속 (URL 직접 입력 / 북마크)';
       const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? '모바일 (Mobile)' : 'PC / 데스크톱';
+      
+      // QR로 유입되었는지 판별
+      const storeLabel = currentStore ? `🚩 QR 코드 접속 [${currentStore}]` : '일반 웹 접속';
 
       const discordPayload = {
         username: '아니마 트래킹봇',
         embeds: [
           {
-            title: '🐾 [방문 알림] 새로운 방문자가 접속했습니다',
-            color: 0x163e32, // 다크 그린
+            title: currentStore ? `🐾 [매장 QR 방문] ${currentStore}에서 접속했습니다!` : '🐾 [방문 알림] 새로운 방문자가 접속했습니다',
+            color: currentStore ? 0xc8ad79 : 0x163e32,
             fields: [
-              { name: '접속 일시', value: now, inline: true },
+              { name: '유입 매장 / 출처', value: storeLabel, inline: true },
               { name: '접속 환경', value: isMobile, inline: true },
-              { name: '유입 경로', value: referrer, inline: false },
+              { name: '접속 일시', value: now, inline: true },
+              { name: '상세 유입 경로', value: referrer, inline: false },
               { name: '페이지 주소', value: location.href, inline: false }
             ],
             footer: { text: 'ANIMA POOL TERRACE · 실시간 방문 감지' }
@@ -83,13 +95,12 @@ if (config.notificationsEnabled) {
         ]
       };
 
-      // 방문 시에는 문자를 보내지 않으므로 smsPayload는 null
       notifyWorker(discordPayload, null).catch(() => {});
     }
   } catch (e) {}
 }
 
-// 2. 방문상담 예약 제출 (디스코드 + 문자 동시 발송)
+// 2. 방문상담 예약 제출 (디스코드 + 문자에 유입 매장 표기)
 const bookingForm = document.querySelector('#booking');
 if (bookingForm) {
   bookingForm.addEventListener('submit', async (e) => {
@@ -111,6 +122,7 @@ if (bookingForm) {
 
     const formattedPhone = data.phone.replace(/^(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3');
     const now = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+    const storeInfo = currentStore ? `QR 코드 (${currentStore})` : '일반 웹 유입';
 
     // 디스코드용 Embed 카드 페이로드
     const discordPayload = {
@@ -118,14 +130,15 @@ if (bookingForm) {
       embeds: [
         {
           title: '🎉 [예약 접수] 새로운 방문상담 신청이 도착했습니다!',
-          color: 0xc8ad79, // 골드
+          color: 0xc8ad79,
           fields: [
             { name: '고객 성함', value: data.name, inline: true },
             { name: '연락처', value: formattedPhone, inline: true },
+            { name: '유입 매장', value: storeInfo, inline: true },
             { name: '방문 희망일', value: data.date, inline: true },
             { name: '희망 시간', value: data.time || '시간 협의', inline: true },
             { name: '관심 상품', value: data.interest || '상담 후 결정', inline: true },
-            { name: '접수 일시', value: now, inline: true },
+            { name: '접수 일시', value: now, inline: false },
             { name: '문의사항', value: data.message ? `\`\`\`\n${data.message}\n\`\`\`` : '없음', inline: false }
           ],
           footer: { text: 'ANIMA POOL TERRACE · 방문상담 예약' }
@@ -133,13 +146,14 @@ if (bookingForm) {
       ]
     };
 
-    // 문자(SMS) 웹훅용 페이로드 (규격에 유연하게 대응하도록 주요 키 모두 포함)
-    const smsText = `[아니마 풀 테라스] 방문상담 예약 신청\n- 성함: ${data.name}\n- 연락처: ${formattedPhone}\n- 희망일시: ${data.date} (${data.time})\n- 상품: ${data.interest}\n- 문의: ${data.message || '없음'}`;
+    // 문자(SMS) 웹훅용 페이로드 (매장 유입 정보 포함)
+    const smsText = `[아니마 풀 테라스] 방문상담 신청\n- 성함: ${data.name}\n- 연락처: ${formattedPhone}\n- 유입: ${storeInfo}\n- 희망일: ${data.date} (${data.time})\n- 상품: ${data.interest}\n- 문의: ${data.message || '없음'}`;
     const smsPayload = {
       phone: data.phone,
       to: data.phone,
       receiver: data.phone,
       name: data.name,
+      store: currentStore || '일반',
       message: smsText,
       msg: smsText,
       text: smsText,
