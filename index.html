@@ -70,7 +70,7 @@
     }
 
     /* =================================================
-       1. 상단 고정 헤더 (참고 자료 구조 계승)
+       1. 상단 고정 헤더
        ================================================= */
     header.site-header {
       width: 100%;
@@ -131,7 +131,7 @@
       display: flex;
       align-items: center;
       list-style: none;
-      gap: 34px;
+      gap: 30px;
     }
 
     .nav-link {
@@ -253,10 +253,10 @@
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 22px;
       }
       .mobile-cat-item {
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 500;
         color: var(--gold-light);
         letter-spacing: 0.06em;
@@ -293,7 +293,7 @@
     }
 
     /* =================================================
-       2. 첫 화면 (Split Brand Intro / 참고 자료 .platform-responsive-section)
+       2. 첫 화면 (Split Brand Intro)
        ================================================= */
     .platform-responsive-section {
       width: 100%;
@@ -458,10 +458,6 @@
         letter-spacing: 0.03em;
         text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
         pointer-events: none;
-      }
-
-      .platform-fullwidth-bottom-img {
-        display: none;
       }
     }
 
@@ -644,7 +640,7 @@
     }
 
     /* =================================================
-       3. 공통 가로 슬라이더 섹션 (참고 자료 .uh-rh / .uh-ri / .uh-rj)
+       3. 공통 가로 슬라이더 섹션
        ================================================= */
     .uh-section {
       width: 100%;
@@ -920,17 +916,178 @@
     .uh-nav-btn.next { right: 28px; }
 
     /* =================================================
-       4. 예약 섹션 바로 앞: last.jpg 브로슈어 요약 섹션
+       4. 신규 섹션: INDOOR CARE & LOUNGE (won.png & cafe.png 배치)
        ================================================= */
-    .last-archive-section {
+    .indoor-care-section {
       width: 100%;
       background-color: var(--ivory);
       padding: 96px 24px;
       border-top: 1px solid var(--border-light);
     }
 
-    .last-archive-inner {
-      max-width: 1120px;
+    .indoor-care-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .indoor-care-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .indoor-care-eyebrow {
+      font-family: 'Marcellus', serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .indoor-care-title {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(24px, 3.2vw, 32px);
+      color: var(--deep-green);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .indoor-care-sub {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .indoor-care-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .indoor-card {
+      background-color: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(18, 40, 32, 0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .indoor-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px rgba(18, 40, 32, 0.11);
+    }
+
+    .indoor-card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1.42;
+      overflow: hidden;
+      background-color: #e9e4d8;
+      position: relative;
+    }
+
+    .indoor-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .indoor-card:hover .indoor-card-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .indoor-card-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(18, 40, 32, 0.85);
+      color: var(--gold-light);
+      font-family: 'Marcellus', serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      padding: 6px 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(200, 169, 106, 0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .indoor-card-body {
+      padding: 28px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .indoor-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--deep-green);
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .indoor-card-desc {
+      font-size: 14.5px;
+      color: var(--text-body);
+      line-height: 1.72;
+      word-break: keep-all;
+    }
+
+    .indoor-card-tags {
+      margin-top: auto;
+      padding-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .indoor-tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--deep-green);
+      background-color: var(--ivory-warm);
+      border: 1px solid var(--border-light);
+      padding: 5px 12px;
+      border-radius: 16px;
+    }
+
+    @media (max-width: 960px) {
+      .indoor-care-section {
+        padding: 64px 20px;
+      }
+      .indoor-care-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .indoor-card-body {
+        padding: 22px 20px 26px;
+      }
+    }
+
+    /* =================================================
+       5. 예약 섹션 바로 앞: 아니마 에어포트 서비스 (pickndrop.png)
+       ================================================= */
+    .airport-service-section {
+      width: 100%;
+      background-color: var(--ivory-warm);
+      padding: 96px 24px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .airport-service-inner {
+      max-width: 1160px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -938,85 +1095,104 @@
       align-items: center;
     }
 
-    .last-img-frame {
+    .airport-img-frame {
       width: 100%;
       border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 18px 40px rgba(18, 40, 32, 0.12);
+      box-shadow: 0 18px 40px rgba(18, 40, 32, 0.14);
       border: 1px solid var(--border-light);
       background-color: var(--deep-green-dark);
+      position: relative;
     }
 
-    .last-img-frame img {
+    .airport-img-frame img {
       width: 100%;
       height: auto;
       display: block;
+      object-fit: cover;
     }
 
-    .last-text-box {
+    .airport-text-box {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .last-eyebrow {
+    .airport-eyebrow {
       font-family: 'Marcellus', serif;
       font-size: 13px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       color: var(--gold-dark);
       text-transform: uppercase;
     }
 
-    .last-title {
-      font-size: clamp(22px, 3vw, 30px);
+    .airport-title {
+      font-size: clamp(23px, 3vw, 31px);
       font-weight: 700;
       color: var(--deep-green);
       line-height: 1.4;
       word-break: keep-all;
     }
 
-    .last-desc {
+    .airport-desc {
       font-size: 15px;
       color: var(--text-body);
-      line-height: 1.75;
+      line-height: 1.78;
       word-break: keep-all;
     }
 
-    .last-facility-tags {
+    .airport-step-list {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 4px;
     }
 
-    .last-tag {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--deep-green);
-      background-color: var(--ivory-warm);
+    .airport-step-card {
+      background-color: var(--white);
       border: 1px solid var(--border-light);
-      padding: 7px 14px;
-      border-radius: 20px;
+      border-left: 3px solid var(--deep-green);
+      border-radius: 4px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .last-caption-note {
+    .airport-step-label {
+      font-family: 'Marcellus', 'Pretendard', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold-dark);
+    }
+
+    .airport-step-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    .airport-caption-note {
       font-size: 12px;
       color: var(--text-muted);
       line-height: 1.5;
     }
 
     @media (max-width: 960px) {
-      .last-archive-section {
+      .airport-service-section {
         padding: 64px 20px;
       }
-      .last-archive-inner {
+      .airport-service-inner {
         grid-template-columns: 1fr;
         gap: 32px;
       }
     }
 
     /* =================================================
-       5. 마지막 섹션: 방문상담 예약 폼 + 브리핑 비주얼 (참고 자료 .framer-9whc7a)
+       6. 마지막 섹션: 방문상담 예약 폼 + 브리핑 비주얼
        ================================================= */
     .reservation-split-section {
       width: 100%;
@@ -1306,7 +1482,7 @@
     }
 
     /* =================================================
-       6. 푸터 & 하단 고정 플로팅 상담 바
+       7. 푸터 & 하단 고정 플로팅 상담 바
        ================================================= */
     footer.site-footer {
       background-color: #07110d;
@@ -1408,7 +1584,7 @@
     }
 
     /* =================================================
-       7. 모달 팝업 (1: 진입 시 그랜드오픈 팝업 / 2: 개인정보 수집·이용 안내)
+       8. 개인정보 수집·이용 안내 모달 (약관 보기 클릭 시에만 표시)
        ================================================= */
     .modal-backdrop {
       position: fixed;
@@ -1426,82 +1602,6 @@
       display: flex;
     }
 
-    /* 진입 팝업 카드 */
-    .entry-popup-card {
-      width: 100%;
-      max-width: 420px;
-      background-color: var(--deep-green-dark);
-      border: 1px solid rgba(200, 169, 106, 0.5);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .entry-popup-img-wrap {
-      width: 100%;
-      max-height: 70vh;
-      overflow-y: auto;
-      background-color: #0b1914;
-    }
-
-    .entry-popup-img-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .entry-popup-cta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 12px 14px 8px;
-      background-color: var(--deep-green);
-    }
-
-    .entry-popup-cta-row a {
-      text-align: center;
-      padding: 11px 8px;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 4px;
-    }
-
-    .entry-popup-cta-row .p-call {
-      background-color: var(--gold);
-      color: var(--deep-green-dark);
-    }
-
-    .entry-popup-cta-row .p-res {
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-    }
-
-    .entry-popup-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 16px;
-      background-color: #08130f;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .entry-popup-footer button {
-      background: none;
-      border: none;
-      color: rgba(248, 246, 240, 0.78);
-      font-size: 12px;
-      cursor: pointer;
-      padding: 4px 6px;
-    }
-
-    .entry-popup-footer button.close-strong {
-      color: var(--gold-light);
-      font-weight: 600;
-    }
-
-    /* 개인정보 수집·이용 안내 모달 카드 */
     .privacy-modal-card {
       width: 100%;
       max-width: 520px;
@@ -1592,7 +1692,8 @@
         <li><a href="#intro" class="nav-link txt-en">BRAND</a></li>
         <li><a href="#aqua-terrace" class="nav-link txt-en">TERRACE &amp; POOL</a></li>
         <li><a href="#pet-park" class="nav-link txt-en">PET PARK &amp; LOUNGE</a></li>
-        <li><a href="#overview" class="nav-link txt-en">OVERVIEW</a></li>
+        <li><a href="#indoor-care" class="nav-link txt-en">INDOOR CARE &amp; CAFE</a></li>
+        <li><a href="#airport-service" class="nav-link txt-en">AIRPORT SERVICE</a></li>
       </ul>
       <div class="nav-utils">
         <a href="tel:1551-7889" class="util-btn-call">문의 1551-7889</a>
@@ -1610,7 +1711,8 @@
         <li><a href="#intro" class="mobile-cat-item"><span class="txt-en">BRAND INTRO</span><span>&gt;</span></a></li>
         <li><a href="#aqua-terrace" class="mobile-cat-item"><span class="txt-en">TERRACE &amp; POOL</span><span>&gt;</span></a></li>
         <li><a href="#pet-park" class="mobile-cat-item"><span class="txt-en">PET PARK &amp; LOUNGE</span><span>&gt;</span></a></li>
-        <li><a href="#overview" class="mobile-cat-item"><span class="txt-en">OVERVIEW</span><span>&gt;</span></a></li>
+        <li><a href="#indoor-care" class="mobile-cat-item"><span class="txt-en">INDOOR CARE &amp; CAFE</span><span>&gt;</span></a></li>
+        <li><a href="#airport-service" class="mobile-cat-item"><span class="txt-en">AIRPORT SERVICE</span><span>&gt;</span></a></li>
         <li><a href="#reservation" class="mobile-cat-item"><span>방문상담 예약</span><span>&gt;</span></a></li>
       </ul>
       <div class="mobile-utils-bottom">
@@ -1623,7 +1725,7 @@
 
   <main id="top">
     <!-- =================================================
-         2. 첫 화면 (Split Brand Intro / 참고 자료 .platform-responsive-section)
+         2. 첫 화면 (Split Brand Intro)
          ================================================= -->
     <section class="platform-responsive-section" id="intro">
       <div class="platform-main-container">
@@ -1794,31 +1896,83 @@
     </section>
 
     <!-- =================================================
-         5. 예약 섹션 바로 앞: last.jpg 이미지 & 짧은 설명
+         5. 신규 섹션: INDOOR CARE & CAFE LOUNGE (won.png & cafe.png 배치)
          ================================================= -->
-    <section class="last-archive-section" id="overview">
-      <div class="last-archive-inner">
-        <div class="last-img-frame">
-          <img src="assets/last.jpg" alt="아니마 풀 테라스 주요 부대시설 안내">
+    <section class="indoor-care-section" id="indoor-care">
+      <div class="indoor-care-inner">
+        <div class="indoor-care-header">
+          <span class="indoor-care-eyebrow">INDOOR PET CARE &amp; SOCIAL LOUNGE</span>
+          <h2 class="indoor-care-title">PET KINDERGARTEN &amp; INDOOR CAFE</h2>
+          <p class="indoor-care-sub">날씨에 구애받지 않는 전문 펫 유치원부터 반려견과 나란히 브런치를 즐기는 실내 카페까지, 세심하게 설계된 인도어 커뮤니티</p>
         </div>
-        <div class="last-text-box">
-          <span class="last-eyebrow">AT A GLANCE</span>
-          <h2 class="last-title">머무는 모든 순간이 반려견을 향한 배려가 되는 곳</h2>
-          <p class="last-desc">아니마 풀 테라스는 펫 라운지·레스토랑·카페, 펫 전용 수영장, 실내·외 펫파크, 펫 유치원, 펫 그루밍룸까지 반려가족의 하루에 필요한 모든 시설을 한 단지에 집약했습니다.</p>
-          <div class="last-facility-tags">
-            <span class="last-tag">펫 동반 레스토랑 &amp; 카페</span>
-            <span class="last-tag">펫 전용 수영장</span>
-            <span class="last-tag">실내·외 펫파크</span>
-            <span class="last-tag">펫 유치원</span>
-            <span class="last-tag">펫 그루밍룸</span>
-          </div>
-          <p class="last-caption-note">※ 본 페이지에 사용된 조감도 및 시설 이미지는 소비자의 이해를 돕기 위한 연출 이미지이며, 실제 시공 및 운영 시 일부 변경될 수 있습니다.</p>
+
+        <div class="indoor-care-grid">
+          <!-- won.png: 펫 유치원 & 실내 플레이존 -->
+          <article class="indoor-card">
+            <div class="indoor-card-img-wrap">
+              <img src="assets/won.png" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='won.png';}" alt="전문 돌봄 인력이 상주하는 아니마 풀 테라스 펫 유치원과 실내 볼풀 플레이존">
+              <span class="indoor-card-badge">PET KINDERGARTEN &amp; DAYCARE</span>
+            </div>
+            <div class="indoor-card-body">
+              <h3 class="indoor-card-title">전문 케어 펫 유치원 &amp; 인도어 플레이존</h3>
+              <p class="indoor-card-desc">전문 돌봄 교사가 상주하며 반려견의 성향과 체형에 맞춘 사회화 교육과 데이케어를 진행합니다. 관절 부담을 줄인 쿠션 볼풀장과 저상 슬라이드 램프, 소프트 터널 등 안전한 실내 놀이 설비가 완비되어 보호자의 외출이나 여행 시에도 안심하고 맡길 수 있습니다.</p>
+              <div class="indoor-card-tags">
+                <span class="indoor-tag">전문 교사 상주 돌봄</span>
+                <span class="indoor-tag">쿠션 볼풀 &amp; 소프트 어질리티</span>
+                <span class="indoor-tag">데이케어 · 사회화 클래스</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- cafe.png: 펫 동반 실내 카페 & 라운지 -->
+          <article class="indoor-card">
+            <div class="indoor-card-img-wrap">
+              <img src="assets/cafe.png" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='cafe.png';}" alt="반려견과 함께 커피와 디저트를 즐기는 펫 동반 실내 카페 라운지">
+              <span class="indoor-card-badge">PET FRIENDLY CAFE &amp; LOUNGE</span>
+            </div>
+            <div class="indoor-card-body">
+              <h3 class="indoor-card-title">반려견과 나란히 쉬어가는 펫 동반 카페 &amp; 라운지</h3>
+              <p class="indoor-card-desc">따스한 자연 채광과 내추럴 우드 톤 인테리어가 어우러진 실내 펫 프렌들리 카페입니다. 테이블 아래 미끄럼 방지 러그와 여유로운 좌석 간격을 확보해 반려견이 곁에서 편안하게 휴식하는 동안 보호자도 여유로운 커피와 베이커리 타임을 누릴 수 있습니다.</p>
+              <div class="indoor-card-tags">
+                <span class="indoor-tag">전 좌석 반려견 동반</span>
+                <span class="indoor-tag">논슬립 러그 &amp; 넓은 동선</span>
+                <span class="indoor-tag">커피 · 브런치 · 펫 휴식존</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- =================================================
-         6. 마지막 섹션: 방문상담 예약 (디스코드 + 010-3950-8060 SMS 웹훅 연동)
+         6. 예약 섹션 바로 앞: 아니마 에어포트 서비스 (pickndrop.png)
+         ================================================= -->
+    <section class="airport-service-section" id="airport-service">
+      <div class="airport-service-inner">
+        <div class="airport-img-frame">
+          <img src="assets/pickndrop.png" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='pickndrop.png';}" alt="아니마 에어포트 픽업 앤 드롭 서비스">
+        </div>
+        <div class="airport-text-box">
+          <span class="airport-eyebrow">ANIMA AIRPORT PICK &amp; DROP SERVICE</span>
+          <h2 class="airport-title">여행의 설렘과 귀가의 반가움을 잇는<br>아니마 에어포트 서비스</h2>
+          <p class="airport-desc">해외여행이나 장거리 일정이 있을 때도 반려견 걱정 없이 편안하게 다녀오실 수 있도록, 영종도 아니마 풀 테라스와 공항을 잇는 전용 픽업 &amp; 드롭 컨시어지 서비스를 운영합니다.</p>
+          <div class="airport-step-list">
+            <div class="airport-step-card">
+              <span class="airport-step-label">01 · DEPARTURE DROP-OFF (여행 출발 시)</span>
+              <p class="airport-step-text">여행 가실 때는 아니마 풀 테라스에 반려견을 안심하고 맡기신 후, 전용 차량으로 공항까지 편안하게 태워다 드립니다.</p>
+            </div>
+            <div class="airport-step-card">
+              <span class="airport-step-label">02 · ARRIVAL PICK-UP WITH PET (여행 귀국 시)</span>
+              <p class="airport-step-text">여행에서 돌아오실 때는 정성껏 돌본 강아지를 데리고 공항으로 마중 나가, 보호자와 반려견을 함께 모시고 공항에서 영종도까지 안전하게 태워다 드립니다.</p>
+            </div>
+          </div>
+          <p class="airport-caption-note">※ 에어포트 서비스 이용 예약 및 세부 운영 규정은 방문상담 또는 컨시어지 센터를 통해 안내받으실 수 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================
+         7. 마지막 섹션: 방문상담 예약 (디스코드 + 010-3950-8060 SMS 웹훅 연동)
          ================================================= -->
     <section class="reservation-split-section" id="reservation">
       <div class="reservation-form-col">
@@ -1893,7 +2047,7 @@
   </main>
 
   <!-- =================================================
-       7. 푸터
+       8. 푸터
        ================================================= -->
   <footer class="site-footer">
     <div class="footer-inner">
@@ -1902,7 +2056,8 @@
         <a href="#intro">브랜드 소개</a>
         <a href="#aqua-terrace">테라스 &amp; 수영장</a>
         <a href="#pet-park">펫파크 &amp; 라운지</a>
-        <a href="#overview">단지 안내</a>
+        <a href="#indoor-care">펫 유치원 &amp; 카페</a>
+        <a href="#airport-service">에어포트 서비스</a>
         <a href="#reservation">방문상담 예약</a>
       </div>
       <div class="footer-info">
@@ -1918,7 +2073,7 @@
   </footer>
 
   <!-- =================================================
-       8. 하단 고정 플로팅 상담 바
+       9. 하단 고정 플로팅 상담 바
        ================================================= -->
   <div class="floating-bottom-bar" aria-label="빠른 상담 메뉴">
     <a href="tel:1551-7889" class="float-btn call">전화 1551-7889</a>
@@ -1927,26 +2082,7 @@
   </div>
 
   <!-- =================================================
-       9. 페이지 진입 팝업 모달 (popup.jpg)
-       ================================================= -->
-  <div class="modal-backdrop" id="entryPopupModal" role="dialog" aria-modal="true" aria-label="그랜드 오픈 안내 팝업">
-    <div class="entry-popup-card">
-      <div class="entry-popup-img-wrap">
-        <img src="assets/popup.jpg" alt="500만원으로 시작하는 올인원 펫 프렌들리 라이프 아니마 풀 테라스 GRAND OPEN">
-      </div>
-      <div class="entry-popup-cta-row">
-        <a href="tel:1551-7889" class="p-call">전화문의 1551-7889</a>
-        <a href="#reservation" class="p-res" id="popupReserveLink">방문상담 예약</a>
-      </div>
-      <div class="entry-popup-footer">
-        <button type="button" id="hidePopupTodayBtn">오늘 하루 보지 않기</button>
-        <button type="button" class="close-strong" id="closeEntryPopupBtn">닫기 ✕</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =================================================
-       10. 개인정보 수집·이용 안내 모달 (아니마 풀 테라스 전용)
+       10. 개인정보 수집·이용 안내 모달 (약관 보기 클릭 시에만 열림)
        ================================================= -->
   <div class="modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
     <div class="privacy-modal-card">
@@ -1976,7 +2112,7 @@
   </div>
 
   <!-- =================================================
-       11. 스크립트: 웹훅(방문 1회 단일 알림/예약), 팝업, 슬라이더, 모달 제어
+       11. 스크립트: 웹훅(방문 1회 단일 알림/예약), 슬라이더, 모달 제어
        ================================================= -->
   <script>
     const WEBHOOK_ENDPOINT = "https://anima-1-webhook.mohanni1006.workers.dev/";
@@ -1984,15 +2120,13 @@
     const VISIT_NOTIFY_STORAGE_KEY = "anima_visit_notified_once";
 
     /* -------------------------------------------------
-       1) 페이지 접속 시 디스코드 방문 알림 1회만 전송 (중복 호출·프리렌더·이중 메시지 방지)
+       1) 페이지 접속 시 디스코드 방문 알림 1회만 전송
        ------------------------------------------------- */
     async function notifyPageVisitToDiscord() {
-      // 미리보기 봇/크롤러 중복 호출 제외
       if (/bot|spider|crawl|slurp|facebookexternalhit|discordbot|slackbot|telegrambot|twitterbot|kakaotalk-scrap/i.test(navigator.userAgent)) {
         return;
       }
 
-      // 브라우저 프리렌더링 상태일 경우 실제 화면 표시 시점에 1회만 실행
       if (document.prerendering || document.visibilityState === "prerender") {
         document.addEventListener("visibilitychange", function onVisible() {
           if (document.visibilityState === "visible") {
@@ -2003,16 +2137,13 @@
         return;
       }
 
-      // 동일 방문 세션 내 중복 발송 완벽 차단 (알람 2개 발송 방지)
       if (window.__animaVisitNotified) return;
       try {
         if (sessionStorage.getItem(VISIT_NOTIFY_STORAGE_KEY) === "1") {
           return;
         }
         sessionStorage.setItem(VISIT_NOTIFY_STORAGE_KEY, "1");
-      } catch (e) {
-        // sessionStorage 접근 제한 환경 대비 인메모리 플래그 유지
-      }
+      } catch (e) {}
       window.__animaVisitNotified = true;
 
       const nowKst = new Date().toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
@@ -2020,7 +2151,6 @@
       const pageUrl = window.location.href;
       const deviceType = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? "모바일" : "데스크톱";
 
-      // content와 embeds가 분리 발송되지 않도록 단일 embed 구조로 통합
       const discordPayload = {
         username: "ANIMA POOL TERRACE 방문알림",
         embeds: [
@@ -2051,34 +2181,6 @@
       } catch (err) {
         console.warn("방문 알림 웹훅 전송 중 오류:", err);
       }
-    }
-
-    function initEntryPopup() {
-      const popupModal = document.getElementById("entryPopupModal");
-      const closeBtn = document.getElementById("closeEntryPopupBtn");
-      const hideTodayBtn = document.getElementById("hidePopupTodayBtn");
-      const reserveLink = document.getElementById("popupReserveLink");
-
-      const hideUntil = localStorage.getItem("anima_hide_popup_until");
-      const now = Date.now();
-
-      if (!hideUntil || now > Number(hideUntil)) {
-        popupModal.classList.add("is-visible");
-      }
-
-      const closePopup = () => popupModal.classList.remove("is-visible");
-
-      closeBtn.addEventListener("click", closePopup);
-      reserveLink.addEventListener("click", closePopup);
-      popupModal.addEventListener("click", (e) => {
-        if (e.target === popupModal) closePopup();
-      });
-
-      hideTodayBtn.addEventListener("click", () => {
-        const tomorrow = Date.now() + 24 * 60 * 60 * 1000;
-        localStorage.setItem("anima_hide_popup_until", String(tomorrow));
-        closePopup();
-      });
     }
 
     /* -------------------------------------------------
@@ -2176,7 +2278,6 @@
           });
         }
 
-        // 모바일 터치 스와이프 지원
         let startX = 0;
         let isDragging = false;
 
@@ -2214,7 +2315,6 @@
       const statusBox = document.getElementById("formStatusMessage");
       const submitBtn = document.getElementById("submitBtn");
 
-      // 연락처 자동 하이픈 포맷팅
       phoneInput.addEventListener("input", (e) => {
         const digits = e.target.value.replace(/\D/g, "").slice(0, 11);
         if (digits.length < 4) {
@@ -2286,7 +2386,6 @@
           ]
         };
 
-        // Cloudflare Worker의 env.SMS_WEBHOOK_URL 연동 규격 대응
         const smsPayload = {
           to: ADMIN_SMS_NUMBER,
           receiver: ADMIN_SMS_NUMBER.replace(/-/g, ""),
@@ -2340,7 +2439,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      initEntryPopup();
       notifyPageVisitToDiscord();
       initModalsAndMenu();
       initSliders();
